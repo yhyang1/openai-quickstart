@@ -6,6 +6,7 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 from utils import ArgumentParser, ConfigLoader, LOG
 from model import GLMModel, OpenAIModel
 from translator import PDFTranslator
+from gui import TranslatorApp
 
 if __name__ == "__main__":
     argument_parser = ArgumentParser()
@@ -24,4 +25,11 @@ if __name__ == "__main__":
 
     # 实例化 PDFTranslator 类，并调用 translate_pdf() 方法
     translator = PDFTranslator(model)
-    translator.translate_pdf(pdf_file_path, file_format)
+    if args.gui:
+        from PyQt5.QtWidgets import QApplication
+        app = QApplication(sys.argv)
+        main_win = TranslatorApp(translator, config)
+        main_win.show()
+        sys.exit(app.exec_())
+    else:
+        translator.translate_pdf(pdf_file_path, file_format)
