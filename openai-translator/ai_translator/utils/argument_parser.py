@@ -12,6 +12,7 @@ class ArgumentParser:
         self.parser.add_argument('--book', type=str, help='PDF file to translate.')
         self.parser.add_argument('--file_format', type=str, help='The file format of translated book. Now supporting PDF and Markdown')
         self.parser.add_argument('--gui', action='store_true', help='Run the GUI version of the translator.')
+        self.parser.add_argument('--api', action='store_true', help='Run the API version of the translator.')
 
     def parse_arguments(self):
         args = self.parser.parse_args()

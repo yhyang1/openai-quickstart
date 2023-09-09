@@ -8,3 +8,8 @@ pandas
 loguru
 openai
 pyqt
+fastapi[all]
+unicorn
+pytest
+httpx
+python-multipart

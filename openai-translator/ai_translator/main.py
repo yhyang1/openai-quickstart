@@ -31,5 +31,9 @@ if __name__ == "__main__":
         main_win = TranslatorApp(translator, config)
         main_win.show()
         sys.exit(app.exec_())
+    elif args.api:
+        from api import APIManager
+        api_manager = APIManager(translator, config)
+        api_manager.run()
     else:
         translator.translate_pdf(pdf_file_path, file_format)
