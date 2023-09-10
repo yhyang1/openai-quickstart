@@ -26,7 +26,7 @@ if __name__ == "__main__":
     # 实例化 PDFTranslator 类，并调用 translate_pdf() 方法
     translator = PDFTranslator(model)
     if args.gui:
-        from PyQt5.QtWidgets import QApplication
+        from PySide6.QtWidgets import QApplication
         app = QApplication(sys.argv)
         main_win = TranslatorApp(translator, config)
         main_win.show()

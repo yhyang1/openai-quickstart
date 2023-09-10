@@ -10,12 +10,12 @@ class PDFTranslator:
         self.pdf_parser = PDFParser()
         self.writer = Writer()
 
-    def translate_pdf(self, pdf_file_path: str, file_format: str = 'PDF', target_language: str = '中文', output_file_path: str = None, pages: Optional[int] = None, save: bool = True):
+    def translate_pdf(self, pdf_file_path: str, file_format: str = 'PDF', target_language: str = '中文', style: str = None, output_file_path: str = None, pages: Optional[int] = None, save: bool = True):
         self.book = self.pdf_parser.parse_pdf(pdf_file_path, pages)
 
         for page_idx, page in enumerate(self.book.pages):
             for content_idx, content in enumerate(page.contents):
-                prompt = self.model.translate_prompt(content, target_language)
+                prompt = self.model.translate_prompt(content, target_language, style)
                 LOG.debug(prompt)
                 translation, status = self.model.make_request(prompt)
                 LOG.info(translation)

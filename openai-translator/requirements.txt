@@ -7,7 +7,7 @@ reportlab
 pandas
 loguru
 openai
-pyqt
+PySide6
 fastapi[all]
 unicorn
 pytest
